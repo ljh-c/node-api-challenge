@@ -15,9 +15,9 @@ router.get('/', async (req, res) => {
 });
 
 // READ PROJECT BY ID
-router.get('/:id', validateProjectId, async (req, res) => {
+router.get('/:id', validateProjectId, (req, res) => {
   try {
-    res.status(200).json(await Projects.get(req.params.id));
+    res.status(200).json(req.project);
   }
   catch (err) {
     res.status(500).json({ error: err.message });
@@ -28,6 +28,17 @@ router.get('/:id', validateProjectId, async (req, res) => {
 router.get('/:id/actions', validateProjectId, async (req, res) => {
   try {
     res.status(200).json(await Projects.getProjectActions(req.params.id));
+  }
+  catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// ADD PROJECT
+
+router.post('/', async (req, res) => {
+  try {
+    res.status(201).json(await Projects.insert(req.body));
   }
   catch (err) {
     res.status(500).json({ error: err.message });
@@ -50,8 +61,6 @@ async function validateProjectId(req, res, next) {
   catch (err) {
     res.status(500).json({ error: err.message });
   }
-
-  Projects.get(req.params.id);
 }
 
 module.exports = router;
