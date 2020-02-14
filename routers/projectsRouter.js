@@ -45,6 +45,18 @@ router.post('/', async (req, res) => {
   }
 });
 
+// DELETE PROJECT
+
+router.delete('/:id', validateProjectId, async (req, res) => {
+  try {
+    await Projects.remove(req.project.id);
+    res.sendStatus(200);
+  }
+  catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // middleware
 
 async function validateProjectId(req, res, next) {
