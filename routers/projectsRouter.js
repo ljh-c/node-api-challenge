@@ -76,7 +76,7 @@ async function validateProjectId(req, res, next) {
     const project = await Projects.get(req.params.id);
 
     if (project === null) {
-      res.status(400).json({ message: "Invalid project id. "})
+      res.status(400).json({ message: "Invalid project id." })
     } else {
       req.project = project;
       next();
