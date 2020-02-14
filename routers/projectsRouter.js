@@ -57,6 +57,18 @@ router.delete('/:id', validateProjectId, async (req, res) => {
   }
 });
 
+// UPDATE PROJECT
+
+router.put('/:id', validateProjectId, async (req, res) => {
+  try {
+    const updatedProject = await Projects.update(req.project.id, req.body);
+    res.status(200).json(updatedProject);
+  }
+  catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // middleware
 
 async function validateProjectId(req, res, next) {
