@@ -26,6 +26,29 @@ router.get('/:id', validateActionId, (req, res) => {
   }
 });
 
+// DELETE ACTION
+
+router.delete('/:id', validateActionId, async (req, res) => {
+  try {
+    await Actions.remove(req.action.id);
+    res.sendStatus(200);
+  }
+  catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
+// UPDATE ACTION
+
+router.put('/:id', validateActionId, async (req, res) => {
+  try {
+    res.status(200).json(await Actions.update(req.action.id, req.body));
+  }
+  catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
+
 // middleware
 
 async function validateActionId(req, res, next) {
