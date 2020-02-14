@@ -24,6 +24,14 @@ router.get('/:id', async (req, res) => {
   }
 })
 
-// middleware
+// READ ACTIONS FOR A PROJECT
+router.get('/:id/actions', async (req, res) => {
+  try {
+    res.status(200).json(await Projects.getProjectActions(req.params.id));
+  }
+  catch (err) {
+    res.status(500).json({ error: err.message });
+  }
+});
 
 module.exports = router;
