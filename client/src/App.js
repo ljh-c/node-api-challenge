@@ -23,7 +23,7 @@ function App() {
           <Col lg="8" md="6">
             <Router>
               <Switch>
-                <Route path="projects/:id" component={ProjectPage} />
+                <Route path="/projects/:id" component={ProjectPage} />
                 <Route exact path="/" component={ProjectList} />
               </Switch>
             </Router>

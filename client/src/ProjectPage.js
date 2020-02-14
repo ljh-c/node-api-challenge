@@ -31,7 +31,7 @@ const ProjectPage = () => {
         <>
           <h2>{project.name}</h2>
           <h3>{project.description}</h3>
-          {project.actions.map(action => <p>{action.description}</p>)}
+          {project.actions.map(action => <p key={action.id}>{action.description}</p>)}
         </>
       )}
     </section>
