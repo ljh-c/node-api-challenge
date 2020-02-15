@@ -40,13 +40,25 @@ Demonstrate your understanding of this Sprint's concepts by answering the follow
 
 - [ ] Mention two parts of Express that you learned about this week.
 
+`Routing refers to determining how an application responds to a client request to a particular endpoint and a specific HTTP request method. Routing can be defined in Express using methods in the Express app object that correspond to HTTP methods e.g. app.post() handles POST requests.`
+
+`Express has convenience helpers such as extension methods added to request and response objects including response.status() and response.json().`
+
 - [ ] Describe Middleware?
+
+`Middleware is any code that works in the middle of the execution of a different process. In Redux, it can intercept and modify dispatched actions. In Express, middleware is an array of functions executed in a specific order during a request to an Express server. In fact, an Express application is "essentially a series of middleware function calls" (from Express documentation) which contributes to the framework's customizability.`
 
 - [ ] Describe a Resource?
 
+`In the context of an API, a resource is an object with associated data, database relationships to other resources, and a set of methods that operate on it. Services make requests to APIs to interface with the resource.`
+
 - [ ] What can the API return to help clients know if a request was successful?
 
+`By sending an HTTP status code, especially 200 (OK) or 201 (Created).`
+
 - [ ] How can we partition our application into sub-applications?
+
+`We can use Express routers, which act as mini Express applications, for different resources. Reusable functions like validation can be extracted into middleware.`
 
 ## Minimum Viable Product
 
